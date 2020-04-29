@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,18 +26,18 @@ public class TeamController {
 		return teamService.getAllTeams();
 	}
 	
-	@RequestMapping(method=RequestMethod.POST,value = "/teams")
+	@PostMapping("/teams")
 	public void addTeam(@RequestBody Team team) {
 		teamService.addTeam(team);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE,value = "/teams/{id}")
+	@DeleteMapping("/teams/{id}")
 	public void deleteTeam(@PathVariable String id) {
 		teamService.deleteTeam(id);
 	}
 	
 	
-	@RequestMapping(method=RequestMethod.PUT,value = "/teams/{id}")
+	@PostMapping("/teams")
 	public void updateTeam(@PathVariable String id, @RequestBody Team team) {
 		teamService.updateTeam(id, team);
 	}
