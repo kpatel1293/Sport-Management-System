@@ -2,6 +2,7 @@ package edu.depaul.cdm.se.sportmanagementsystem.teams;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
+
 public class TeamService {
 	
 	@Autowired
@@ -29,7 +30,8 @@ public class TeamService {
 		
 	}
 	
-	public void updateTeam(Team team) {
+	
+	public void updateTeam(String id, Team team) {
 		teamRepository.save(team);
 	}
 	
@@ -37,7 +39,7 @@ public class TeamService {
 		teamRepository.deleteById(id);
 	}
 
-	public void getTeam(String id) {
-		teamRepository.findById(id);
+	public Optional<Team> getTeam(String id) {
+		return teamRepository.findById(id);
 	}
 }
