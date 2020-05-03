@@ -1,6 +1,5 @@
 package edu.depaul.cdm.se.sportmanagementsystem.controller;
 
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +43,7 @@ public class GameScheduleController {
     }
 
     // get game schedules by team
-    @GetMapping("/team/schedule/{team}")
+    @GetMapping("/games/team/{team}")
     public ResponseEntity<List<GameSchedule>> getGameByTeam(@PathVariable(name = "team") String teamName) {
         List<GameSchedule> gameSchedules = new ArrayList<>();
         gameScheduleService.getGameScheduleByTeam(teamName).forEach(gameSchedule -> gameSchedules.add(gameSchedule));

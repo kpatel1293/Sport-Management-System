@@ -23,7 +23,7 @@ import edu.depaul.cdm.se.sportmanagementsystem.service.RatingService;
 import edu.depaul.cdm.se.sportmanagementsystem.service.UserService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/teams/ratings")
 public class RatingController {
     @Autowired
     RatingService ratingService;
@@ -32,13 +32,13 @@ public class RatingController {
     UserService userService;
 
     // get all ratings
-    @GetMapping("/ratings")
+    @GetMapping
     public List<Rating> getAllRatings() {
         return ratingService.getAllRatings();
     }
 
     // get rating
-    @GetMapping("/ratings/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Rating> getRatingById(@PathVariable(name = "id") Long ratingId) {
         Rating rating = ratingService.getRating(ratingId);
 
@@ -46,7 +46,7 @@ public class RatingController {
     }
 
     // get ratings by team
-    @GetMapping("/{team}/ratings")
+    @GetMapping("/team/{team}")
     public ResponseEntity<List<Rating>> getRatingByTeam(@PathVariable(name = "team") String team) {
         List<Rating> ratings = new ArrayList<Rating>();
         ratingService.getRatingByTeam(team).forEach(rating -> ratings.add(rating));
@@ -55,7 +55,7 @@ public class RatingController {
     }
 
     // get ratings by user
-    @GetMapping("/users/{user_id}/ratings")
+    @GetMapping("/users/{user_id}")
     public List<Rating> getRatingByUser(@PathVariable(name = "user_id") Long userID) {
         User user = userService.getUser(userID);
         
@@ -63,7 +63,7 @@ public class RatingController {
     }
 
     // save rating
-    @PostMapping("/users/{user_id}/ratings")
+    @PostMapping("/users/{user_id}")
     public ResponseEntity<Rating> saveRating(@PathVariable(name = "user_id") Long userId, @Valid @RequestBody Rating rating) {
         User user = userService.getUser(userId);
 
@@ -74,7 +74,7 @@ public class RatingController {
     }
 
     // delete rating
-    @DeleteMapping("/ratings/{rating_id}")
+    @DeleteMapping("/{rating_id}")
     public Map<String, Boolean> deleteRating(@PathVariable(value = "rating_id") Long id) {
         Rating rating = ratingService.getRating(id);
 

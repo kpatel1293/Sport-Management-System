@@ -2,7 +2,6 @@ package edu.depaul.cdm.se.sportmanagementsystem.model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.Year;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

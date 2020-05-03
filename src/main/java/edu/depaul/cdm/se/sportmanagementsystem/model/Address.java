@@ -23,21 +23,21 @@ public class Address implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    // // street 1
-    // @Column(name = "street_main")
-    // private String streetOne;
+    // street 1
+    @Column(name = "street_main")
+    private String streetOne;
 
-    // // street 2
-    // @Column(name = "street_opt")
-    // private String streetTwo;
+    // street 2
+    @Column(name = "street_opt")
+    private String streetTwo;
 
-    // // zipcode
-    // @Column(name = "zipcode")
-    // private int zipcode;
+    // zipcode
+    @Column(name = "zipcode")
+    private int zipcode;
 
-    // // city
-    // @Column(name = "city")
-    // private String city;
+    // city
+    @Column(name = "city")
+    private String city;
 
     // state
     @Column(name = "state")
