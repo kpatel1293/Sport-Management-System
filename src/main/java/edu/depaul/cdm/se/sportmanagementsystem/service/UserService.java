@@ -11,30 +11,28 @@ import edu.depaul.cdm.se.sportmanagementsystem.repository.UserRepository;
 
 @Service
 public class UserService {
-	@Autowired
-	UserRepository userRepository;
-	
-	// get a user
-	public User getUser(Long id) {
-		return userRepository.findById(id).get();
-	}
-	
-	// get all users
-	public List<User> getAllUser() {
-		List<User> users = new ArrayList<User>();
-		
-		userRepository.findAll().forEach(user -> users.add(user));
-		
-		return users;
-	}
-	
-	// add/update a user
-	public void addUser(User user) {
-		userRepository.save(user);
-	}
-	
-	// remove a user
-	public void deleteUser(Long id) {
-		userRepository.deleteById(id);
-	}
+    @Autowired
+    UserRepository userRepository;
+
+    // get all users
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<User>();
+        userRepository.findAll().forEach(user -> users.add(user));
+        return users;
+    }
+
+    // get one user (by id)
+    public User getUser(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+    // save/update user
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    // delete user
+    public void deleteUser(User user) {
+        userRepository.delete(user);
+    }
 }

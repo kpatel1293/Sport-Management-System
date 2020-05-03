@@ -1,12 +1,13 @@
 package edu.depaul.cdm.se.sportmanagementsystem.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -15,27 +16,43 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @Data
-public class User {
-	private static final long serialVersionUID = 1L;
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    // user id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long id;
 
-	// id
-	@Id @GeneratedValue
-	private Long userID;
-	
-	// name
-	private String firstName;
-	private String lastName;
+    // first name
+    @Column(name = "first_name")
+    private String firstName;
 
-	// dob
-	// format : yyyy-MM-dd
-	private Date dob;
+    // last name
+    @Column(name = "last_name")
+    private String lastName;
 
-	// login
-	private String email;
-	private String password;
+    // dob
+    @Column(name = "date_of_birth")
+    private Date dob;
 
-	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Address address;
+    // type of user
+    @Column(name = "user_type")
+    private TypeOfUser userType;
+
+    // email
+    @Column(name = "user_email")
+    private String email;
+
+    // password
+    @Column(name = "password")
+    private String password;
+
+    // address
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
 }

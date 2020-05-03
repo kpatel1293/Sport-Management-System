@@ -1,36 +1,45 @@
 package edu.depaul.cdm.se.sportmanagementsystem.model;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
 
-import org.springframework.lang.Nullable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "addresses")
-public class Address {
+@Table(name = "address")
+@Data
+public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    // address id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-    @Id @GeneratedValue
-    private Long addressID;
+    // street 1
+    @Column(name = "street_main")
+    private String streetOne;
 
-    private String addressOne;
-    private String addressTwo;
+    // street 2
+    @Column(name = "street_opt")
+    private String streetTwo;
 
+    // zipcode
+    @Column(name = "zipcode")
     private int zipcode;
 
+    // city
+    @Column(name = "city")
     private String city;
 
+    // state
+    @Column(name = "state")
     private String state;
-
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 }
