@@ -1,5 +1,6 @@
 package edu.depaul.cdm.se.sportmanagementsystem.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +48,8 @@ public class RatingController {
     // get ratings by team
     @GetMapping("/{team}/ratings")
     public ResponseEntity<List<Rating>> getRatingByTeam(@PathVariable(name = "team") String team) {
-        List<Rating> ratings = ratingService.getRatingByTeam(team);
-        ratings.forEach(rating -> ratings.add(rating));
+        List<Rating> ratings = new ArrayList<Rating>();
+        ratingService.getRatingByTeam(team).forEach(rating -> ratings.add(rating));
 
         return ResponseEntity.ok().body(ratings);
     }

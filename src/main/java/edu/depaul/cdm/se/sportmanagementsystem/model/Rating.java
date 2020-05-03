@@ -38,10 +38,6 @@ public class Rating implements Serializable {
     @Column(name = "desc")
     private String desc;
 
-    // rating average
-    @Column(name = "rating_avg")
-    private Double avg;
-
     // user
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")

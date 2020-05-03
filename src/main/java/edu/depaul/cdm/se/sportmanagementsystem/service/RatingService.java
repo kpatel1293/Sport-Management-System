@@ -18,7 +18,7 @@ public class RatingService {
     // get all ratings
     public List<Rating> getAllRatings() {
         List<Rating> ratings = new ArrayList<Rating>();
-        ratings.forEach(rating -> ratings.add(rating));
+        ratingRepository.findAll().forEach(rating -> ratings.add(rating));
 
         return ratings;
     }
@@ -30,8 +30,8 @@ public class RatingService {
 
     // get ratings by team
     public List<Rating> getRatingByTeam(String team) {
-        List<Rating> ratings = ratingRepository.findAll();
-        ratings.forEach(rating -> {
+        List<Rating> ratings = new ArrayList<Rating>();
+        ratingRepository.findAll().forEach(rating -> {
             if(rating.getTeam().equals(team)) ratings.add(rating);
         });
 
@@ -40,8 +40,8 @@ public class RatingService {
 
     // get ratings by user
     public List<Rating> getRatingByUser(User user) {
-        List<Rating> ratings = ratingRepository.findAll();
-        ratings.forEach(rating -> {
+        List<Rating> ratings = new ArrayList<Rating>();
+        ratingRepository.findAll().forEach(rating -> {
             if(rating.getUser().getId() == user.getId()) ratings.add(rating);
         });
 
