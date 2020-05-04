@@ -8,8 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.depaul.cdm.se.sportmanagementsystem.injury.Injury;
-import edu.depaul.cdm.se.sportmanagementsystem.injury.InjuryRepository;
 import edu.depaul.cdm.se.sportmanagementsystem.managers.Managers;
 import edu.depaul.cdm.se.sportmanagementsystem.managers.ManagersRepository;
 import edu.depaul.cdm.se.sportmanagementsystem.teams.TeamRepository;
@@ -28,9 +26,6 @@ public class PlayerServices {
     
     @Autowired
     TeamRepository teamRepository;
-
-    @Autowired 
-    InjuryRepository InjuryRepository;
 
     @Autowired
     ManagersRepository managersRepository;
@@ -68,11 +63,6 @@ public class PlayerServices {
 
         Managers manager = managersRepository.findById(managerId).get();
         player.setManager(manager);
-
-        Injury injury = new Injury();
-        injury.setPlayer(player);
-        injury.setIsInjured(false);
-        InjuryRepository.save(injury);
 
         return playerRepository.save(player);
     }

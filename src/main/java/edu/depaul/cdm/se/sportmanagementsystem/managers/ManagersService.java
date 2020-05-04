@@ -27,6 +27,9 @@ public class ManagersService {
     @Autowired
     PlayerRepository playerepository;
 
+    @Autowired
+    ManagersRepository managersRepository;
+
     // get all managers
     public List<Managers> getAllManagers() {
         List<Managers> managers = new ArrayList<Managers>();
