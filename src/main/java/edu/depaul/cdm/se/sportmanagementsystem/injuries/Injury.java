@@ -1,8 +1,7 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.injuries;
+package edu.depaul.cdm.se.sportmanagementsystem.injuries;
 
 // TODO: Eliminate extra imports ...
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

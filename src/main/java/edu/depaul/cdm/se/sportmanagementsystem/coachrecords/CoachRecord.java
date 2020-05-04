@@ -1,16 +1,11 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.coachrecords;
+package edu.depaul.cdm.se.sportmanagementsystem.coachrecords;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import edu.depaul.cdm.se.sportmanagementsystem.krishna.user.User;
 import lombok.Data;
 
 @Data
@@ -20,7 +15,7 @@ public class CoachRecord implements Serializable {
     
     @Id
     @Column(name = "coach_id")
-    private int id;
+    private Long id;
 
     // rating
     @Column(name = "name")

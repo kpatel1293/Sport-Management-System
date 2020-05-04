@@ -1,4 +1,4 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.injuries;
+package edu.depaul.cdm.se.sportmanagementsystem.injuries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,8 @@ public class InjuryService {
 
 	public List<Injury> getInjuryByPlayerId(int playerId) {
 		List<Injury> injuries = new ArrayList<>();
-		injuryRepository.findAllById(playerId).forEach(injury -> {
-			if (injury.getPlayerId().equals(playerId)) // TODO: does this seem redundant or broken ...?
+		injuryRepository.findAll().forEach(injury -> {
+			if (injury.getPlayerId() == playerId) // TODO: does this seem redundant or broken ...?
 				injuries.add(injury);
 		});
 		return injuries;

@@ -1,9 +1,7 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.coachrecords;
+package edu.depaul.cdm.se.sportmanagementsystem.coachrecords;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.depaul.cdm.se.sportmanagementsystem.krishna.user.User;
-import edu.depaul.cdm.se.sportmanagementsystem.krishna.user.UserService;
 
 @RestController
 @RequestMapping("/api/v1/teams/coachrecords") // TODO: Good ..?
@@ -29,26 +25,26 @@ public class CoachRecordController {
     @GetMapping
     public List<CoachRecord> getAllCoachRecords() {
         List<CoachRecord> coachRecords = new ArrayList<>();
-        coachRecordService.getPlayerRatings().forEach(coachRecords::add); // TODO: direct pass through/RVO without copying?
+        coachRecordService.getAllCoachRecords().forEach(coachRecords::add); // TODO: direct pass through/RVO without copying?
         return coachRecords;
     }
 
-    @GetMapping
-    public ResponseEntity<Injury> getCoachRecordById(@PathVariable(name = "id") int id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<CoachRecord> getCoachRecordById(@PathVariable(name = "id") Long id) {
     	CoachRecord coachRecord = coachRecordService.getCoachRecordById(id);
 		return ResponseEntity.ok().body(coachRecord);
 	}
     
 	// save new injury
 	@PostMapping
-	public ResponseEntity<Team> addCoachRecord(@Valid @RequestBody CoachRecord coachRecord) {
-		coachRecordService.addCoachRecord(coachRecord);
-		return ResponseEntity.ok().body(coachRecordService.addCoachRecord(injury));
+	public ResponseEntity<CoachRecord> addCoachRecord(@Valid @RequestBody CoachRecord coachRecord) {
+		CoachRecord c = coachRecordService.addCoachRecord(coachRecord);
+		return ResponseEntity.ok().body(c);
 	}
 	
 	// delete injury by id
 	@DeleteMapping("/{id}") // TODO - This @DeleteMapping okay?
-	public void deleteCoachRecordById(@PathVariable int id) {
+	public void deleteCoachRecordById(@PathVariable Long id) {
 		coachRecordService.deleteCoachRecordById(id);
 	}
 

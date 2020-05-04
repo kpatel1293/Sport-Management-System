@@ -1,6 +1,7 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.trainingdates;
+package edu.depaul.cdm.se.sportmanagementsystem.trainingdates;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class TrainingDateService {
 	// get every TrainingDate in TrainingDates
 	public List<TrainingDate> getAllTrainingDates() {
 		List<TrainingDate> dates = new ArrayList<>();
-		trainingdateRepository.findAll().forEach(dates::add);
+		trainingDateRepository.findAll().forEach(dates::add);
 		return dates;
 	}
 	
@@ -27,8 +28,8 @@ public class TrainingDateService {
 	// TODO - allow searching by team name? would require team name stored in TrainingDates
 	public List<TrainingDate> getTrainingDatesByTeamId(int teamId) {
 		List<TrainingDate> dates = new ArrayList<>();
-		trainingDateRepository.findAllById(teamId).forEach(trainingDate -> {
-			if (trainingDate.getTeamId().equals(teamId)) // TODO: is this not redundant?
+		trainingDateRepository.findAll().forEach(trainingDate -> {
+			if (trainingDate.getTeamId() == teamId) // TODO: is this not redundant?
 				dates.add(trainingDate);
 		});
 		return dates;

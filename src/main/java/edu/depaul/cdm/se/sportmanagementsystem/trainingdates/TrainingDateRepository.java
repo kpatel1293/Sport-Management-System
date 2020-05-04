@@ -1,4 +1,4 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.trainingdates;
+package edu.depaul.cdm.se.sportmanagementsystem.trainingdates;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

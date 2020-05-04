@@ -6,11 +6,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.depaul.cdm.se.sportmanagementsystem.teamrecord.TeamRecord;
+import edu.depaul.cdm.se.sportmanagementsystem.teamrecord.TeamRecordRepository;
+
 @Service
 public class TeamService {
 	
 	@Autowired
 	private TeamRepository teamRepository;
+
+	@Autowired
+	TeamRecordRepository teamRecordRepository;
 	
 	public List<Team> getAllTeams() {
 		List<Team> teams = new ArrayList<>();
@@ -23,7 +29,11 @@ public class TeamService {
 	}
 	
 	public Team addTeam(Team team) {
-		return teamRepository.save(team);	
+		Team t = teamRepository.save(team);	
+		TeamRecord teamRecord = new TeamRecord();
+		teamRecord.setTeam(t);
+		
+		return t;
 	}
 	
 

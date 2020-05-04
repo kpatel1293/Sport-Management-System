@@ -1,12 +1,10 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.coachrecords;
+package edu.depaul.cdm.se.sportmanagementsystem.coachrecords;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import edu.depaul.cdm.se.sportmanagementsystem.krishna.user.User;
 
 
 @Service
@@ -21,7 +19,7 @@ public class CoachRecordService {
 		return coachRecords;
     }
 
-    public CoachRecord getCoachRecordById(int id) {
+    public CoachRecord getCoachRecordById(Long id) {
         return coachRecordRepository.findById(id).get();
     }
     
@@ -41,7 +39,7 @@ public class CoachRecordService {
 	
 	// TODO - add update method without removal?
 	
-	public void deleteCoachRecordById(int id) {
+	public void deleteCoachRecordById(Long id) {
 		coachRecordRepository.deleteById(id);
 	}
 }

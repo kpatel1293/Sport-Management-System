@@ -1,5 +1,6 @@
-package edu.depaul.cdm.se.sportmanagementsystem.jack.injuries;
+package edu.depaul.cdm.se.sportmanagementsystem.injuries;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -7,9 +8,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,25 +29,25 @@ public class InjuryController {
 	}
 	
 	// get date by id
-	@GetMapping
+	@GetMapping("/{id}")
 	public ResponseEntity<Injury> getInjuryById(@PathVariable(name = "id") int id) {
 		Injury injury = injuryService.getInjuryById(id);
 		return ResponseEntity.ok().body(injury);
 	}
 	
 	// get date by player id
-	@GetMapping
+	@GetMapping("/{playerId}")
 	public ResponseEntity<List<Injury>> getInjuriesByPlayerId(@PathVariable(name = "playerId") int playerId) {
 		List<Injury> injuries = new ArrayList<>();
-		injuryService.getInjuriesByPlayerId(playerId).forEach(injuries::add); // TODO - efficient ..?
+		injuryService.getInjuryByPlayerId(playerId).forEach(injuries::add); // TODO - efficient ..?
 		return ResponseEntity.ok().body(injuries);
 	}
 	
 	// save new injury
 	@PostMapping
-	public ResponseEntity<Team> addInjury(@Valid @RequestBody Injury injury) {
-		injuryService.addInjury(injury);
-		return ResponseEntity.ok().body(injuryService.addInjury(injury));
+	public ResponseEntity<Injury> addInjury(@Valid @RequestBody Injury injury) {
+		Injury i = injuryService.addInjury(injury);
+		return ResponseEntity.ok().body(i);
 	}
 	
 	// delete injury by id
