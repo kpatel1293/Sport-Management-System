@@ -23,6 +23,11 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
+    // get by email
+    public User getUserEmail(String email) {
+        return userRepository.findById(userRepository.findByEmail(email).getId()).get();
+    }
+
     // save user
     public User saveUser(User user) {
 

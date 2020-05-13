@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Login</title>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
+    </head>
+    <body>
+        <div>
+            <h1>LOGIN</h1>
+            <h1>Form</h1>
+            <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+                <p>email: <input type="text" th:field="*{email}" /></p>
+                <p><input type="submit" value="Submit" /></p>
+            </form>
+        </div>    
+    </body>
+</html>

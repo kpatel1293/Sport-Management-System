@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Sign Up</title>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
+    </head>
+    <body>
+        <div>
+            <h1>Sign Up</h1>
+            <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
+                <p>First Name: <input type="text" th:field="*{firstName}" /></p>
+                <p>Last Name: <input type="text" th:field="*{email}" /></p>
+                <p>Date of Birth: <input type="date" th:field="*{dob}" /></p>
+                <p>Email: <input type="text" th:field="*{email}" /></p>
+                <p>Password: <input type="text" th:field="*{password}" /></p>
+                <p><input type="submit" value="Submit" /></p>
+            </form>
+        </div>    
+    </body>
+</html>
