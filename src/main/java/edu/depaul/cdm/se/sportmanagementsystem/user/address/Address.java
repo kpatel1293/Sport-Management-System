@@ -33,7 +33,7 @@ public class Address implements Serializable {
 
     // zipcode
     @Column(name = "zipcode")
-    private int zipcode;
+    private String zipcode;
 
     // city
     @Column(name = "city")

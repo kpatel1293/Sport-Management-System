@@ -8,19 +8,108 @@
         <title>Sign Up</title>
 
         <!-- Bootstrap CSS -->
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
-    </head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script></head>
     <body>
-        <div>
-            <h1>Sign Up</h1>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Sign Up</h1>
+            </div>
+        </div>
+        <div class="container col-7 justify-content-center">
             <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
-                <p>First Name: <input type="text" th:field="*{firstName}" /></p>
-                <p>Last Name: <input type="text" th:field="*{email}" /></p>
-                <p>Date of Birth: <input type="date" th:field="*{dob}" /></p>
-                <p>Email: <input type="text" th:field="*{email}" /></p>
-                <p>Password: <input type="text" th:field="*{password}" /></p>
-                <p><input type="submit" value="Submit" /></p>
+                <div class="form-group form-row">
+                    <div class="col">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+                    </div>
+                    <div class="col">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col">
+                        <label for="dob">Date Of Birth</label>
+                        <input type="date" class="form-control" id="dob" th:field="*{dob}" placeholder="MM-DD-YYYY">
+                    </div>
+                    <div class="col">
+                        <label for="inputGender">Gender</label>
+                        <select id="inputGender" class="form-control" th:field="*{gender}">
+                            <option value="">Select Gender...</option>
+                            <option th:value="Female" th:text="Female"></option>
+                            <option th:value="Male" th:text="Male"></option>
+                            <option th:value="Other" th:text="Other"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" th:field="*{email}">
+                    </div>
+                    <div class="col">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" id="pwd" th:field="*{password}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:field="*{address.streetOne}">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Address 2</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" th:field="*{address.streetTwo}">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity" th:field="*{address.city}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control" th:field="*{address.state}">
+                            <option value="">Select your state...</option>
+                            <option th:value="AK" th:text="AK"></option>
+                            <option th:value="AL" th:text="AL"></option>
+                            <option th:value="AR" th:text="AR"></option>
+                            <option th:value="AZ" th:text="AZ"></option>
+                            <option th:value="CA" th:text="CA"></option>
+                            <option th:value="CO" th:text="CO"></option>
+                            <option th:value="CT" th:text="CT"></option>
+                            <option th:value="DE" th:text="DE"></option>
+                            <option th:value="FL" th:text="FL"></option>
+                            <option th:value="GA" th:text="GA"></option>
+                            <option th:value="HI" th:text="HI"></option>
+                            <option th:value="IA" th:text="IA"></option>
+                            <option th:value="ID" th:text="ID"></option>
+                            <option th:value="IL" th:text="IL"></option>
+                            <option th:value="IN" th:text="IN"></option>
+                            <option th:value="KS" th:text="KS"></option>
+                            <option th:value="KY" th:text="KY"></option>
+                            <option th:value="LA" th:text="LA"></option>
+                            <option th:value="MA" th:text="MA"></option>
+                            <option th:value="MD" th:text="MD"></option>
+                            <option th:value="ME" th:text="ME"></option>
+                            <option th:value="MI" th:text="MI"></option>
+                            <option th:value="MN" th:text="MN"></option>
+                            <option th:value="MO" th:text="MO"></option>
+                            <option th:value="MS" th:text="MS"></option>
+                            <option th:value="MT" th:text="MT"></option>
+                            <option th:value="NC" th:text="NC"></option>
+                            <option th:value="ND" th:text="ND"></option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip" th:field="*{address.zipcode}">
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <br>
+            <p>Already have an account? <a href="/login">Login</a></p>
         </div>    
     </body>
 </html>

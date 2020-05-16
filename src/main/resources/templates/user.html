@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Login</title>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
+    </head>
+    <body>
+        <div>
+            <h1>All Users</h1>
+
+            <div>
+                <table id="userList" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"> Name </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${users.empty}">
+                            <td colspan="2"> No Users Available </td>
+                        </tr>
+                        <tr th:each="user : ${users}">
+                            <td span th:text="${user.firstName}"></td>
+                        </tr>                                                
+                    </tbody>
+                </table>            
+            </div>   
+        </div>    
+    </body>
+</html>

@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import edu.depaul.cdm.se.sportmanagementsystem.user.address.Address;
 import lombok.Data;
 
@@ -38,7 +40,12 @@ public class User implements Serializable {
 
     // dob
     @Column(name = "date_of_birth")
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private Date dob;
+
+    // gender
+    @Column(name = "gender")
+    private String gender;
 
     // type of user
     @Column(name = "user_type")

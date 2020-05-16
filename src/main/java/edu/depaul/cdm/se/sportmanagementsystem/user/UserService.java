@@ -30,8 +30,7 @@ public class UserService {
 
     // save user
     public User saveUser(User user) {
-
-
+        user.setUserType(TypeOfUser.USER);
         return userRepository.save(user);
     }
 
