@@ -8,6 +8,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +20,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.depaul.cdm.se.sportmanagementsystem.player.*;
 
-@RestController
-@RequestMapping("/api/v1/managers")
+@Controller
+//@RequestMapping("/api/v1/managers")
 public class ManagersController {
     @Autowired
     ManagersService managersService;
+    
+    @Autowired
+    private ManagersRepository managerRepo;
+    
+    
+    @GetMapping("/api/v1/managers/{id}/roster")
+    public String viewRoster(Model model, @PathVariable(name = "id") Long id){
+    	model.addAttribute("players", managersService.getTeamPlayers(id));
+    	return "teams/ViewRoster";
+    }
 
     // get all managers
     @GetMapping
@@ -43,7 +55,10 @@ public class ManagersController {
     public ResponseEntity<List<Player>> getAllTeamMembersByManager(@PathVariable(name = "id") Long id) {
         return ResponseEntity.ok().body(managersService.getTeamPlayers(id));
     }
+    
 
+    
+    
     // create manager
     @PostMapping("/users/{id}/{team}")
     public ResponseEntity<Managers> createManager(@PathVariable(name = "id") Long userId, @PathVariable(name = "team") String team,@Valid @RequestBody Managers managers) {

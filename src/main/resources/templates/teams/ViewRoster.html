@@ -16,7 +16,7 @@
 				<tr>					
 					<th scope = "col"> First Name</th>
 					<th scope = "col"> Last Name</th>
-					<th scope = "col"> Age</th>			
+					<th scope = "col"> Date of Birth</th>			
 				
 				</tr>
 			
@@ -28,9 +28,9 @@
 				
 				</tr>	
 				<tr th:each ="player: ${players}">	
-					<td th:text = "${player.first_name}"></td>
-					<td th:text = "${player.last_name}"></td>
-					<td th:text = "${player.age}"></td>
+					<td th:text = "${player.user.firstName}"></td>
+					<td th:text = "${player.user.lastName}"></td>
+					<td th:text = "${player.user.dob}"></td>
 					
 				</tr>
 					
