@@ -35,7 +35,7 @@ public class Managers implements Serializable {
 
     // team
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_name")
     private Team team;
 
     // player list

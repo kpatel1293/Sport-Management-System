@@ -1,0 +1,27 @@
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Oklahoma City', 'OK', '5 Fremont Drive', null, '73147');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Albany', 'GA', '0 Sunbrook Way', '40', '31704');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Littleton', 'CO', '6941 Susan Park', '631', '80161');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Richmond', 'VA', '4269 Sundown Drive', '50214', '23237');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Washington', 'DC', '68 Melrose Junction', '3905', '20231');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Hagerstown', 'MD', '78442 Sutteridge Drive', null, '21747');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Independence', 'MO', '6 Bluejay Point', '44', '64054');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Naples', 'FL', '1799 Corry Place', '90719', '33961');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'San Bernardino', 'CA', '72842 Rockefeller Trail', null, '92415');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Houston', 'TX', '63609 Clove Hill', '98057', '77035');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Kansas City', 'MO', '25064 Old Shore Trail', '10809', '64142');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Monroe', 'LA', '6 Tomscot Parkway', null, '71213');
+insert into `addresses` (`address_id`, `city`, `state`, `street_main`, `street_opt`, `zipcode`) values (null, 'Anchorage', 'AK', '7 Claremont Crossing', '1741', '99517');
+
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 1, '1973-06-10', 'admin@admin.com', 'Admin', 'AdminAct', 'ADMIN', 1, 'Male');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 2, '1970-11-27', 'ahumfrey1@reddit.com', 'Afton', 'Humfrey', 'BFdfzJoY3', 2, 'Male');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 3, '1986-10-29', 'lpaslow2@t.co', 'Leo', 'Paslow', 'opOsGkUo97', 3, 'Male');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 4, '2000-03-07', 'ecutten9@dropbox.com', 'Ernaline', 'Cutten', '7pIZD0bpBK8z', 2, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 5, '1995-09-21', 'nwoloschinski4@independent.co.uk', 'Nadia', 'Woloschinski', 'oqzfqR3UK0X', 2, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 6, '1974-02-06', 'mgabits5@usgs.gov', 'Marisa', 'Gabits', 'fq1DvFFfa4Me', 3, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 7, '1980-01-08', 'sjewitt6@phoca.cz', 'Sandie', 'Jewitt', 'RZk362w8', 1, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 8, '1986-04-12', 'tgumn7@163.com', 'Tracee', 'Gumn', 'ck87pTD1', 0, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 9, '1975-12-27', 'btonbyea@dyndns.org', 'Betsy', 'Tonbye', '6kLTdYCQu', 3, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 10, '1976-10-08', 'nbrelsfordb@disqus.com', 'Nancey', 'Brelsford', 'V0RE59', 1, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 11, '1998-12-22', 'sendrizzic@wordpress.com', 'Skylar', 'Endrizzi', 'N6P52Z', 0, 'Male');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 12, '1998-01-28', 'yadlemh@hao123.com', 'Yovonnda', 'Adlem', 'mXRZEuL0yF', 0, 'Female');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 13, '1985-02-13', 'bdellj@unicef.org', 'Blakeley', 'Dell', 'mkJb5e', 0, 'Male');

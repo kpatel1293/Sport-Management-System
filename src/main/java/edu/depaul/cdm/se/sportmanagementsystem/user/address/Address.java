@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "address")
+@Table(name = "addresses")
 @Data
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -20,7 +20,7 @@ public class Address implements Serializable {
     // address id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "address_id")
     private Long id;
 
     // street 1
@@ -33,7 +33,7 @@ public class Address implements Serializable {
 
     // zipcode
     @Column(name = "zipcode")
-    private int zipcode;
+    private String zipcode;
 
     // city
     @Column(name = "city")
