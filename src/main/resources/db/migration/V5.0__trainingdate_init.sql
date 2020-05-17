@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS trainingdates;
 -- TODO: more granular time tracking, not just 'day of year' 
 CREATE TABLE trainingdates (
     id int primary key auto_increment,
-    team_id int not null foreign key references teams(id);
-    train_date date not null;
+    team_name VARCHAR(255),
+    train_date date not null,
+    CONSTRAINT team_daes_fk FOREIGN KEY(`team_name`) REFERENCES teams(`team_name`)
 );

@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS teams;
+
+CREATE TABLE teams (
+    team_name VARCHAR(255) NOT NULL PRIMARY KEY,
+    city_name VARCHAR(255) NOT NULL
+);

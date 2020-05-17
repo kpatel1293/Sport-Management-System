@@ -24,7 +24,7 @@ public class InjuryService {
 	public List<Injury> getInjuryByPlayerId(int playerId) {
 		List<Injury> injuries = new ArrayList<>();
 		injuryRepository.findAll().forEach(injury -> {
-			if (injury.getPlayerId() == playerId) // TODO: does this seem redundant or broken ...?
+			if (injury.player.getId() == playerId) // TODO: does this seem redundant or broken ...?
 				injuries.add(injury);
 		});
 		return injuries;

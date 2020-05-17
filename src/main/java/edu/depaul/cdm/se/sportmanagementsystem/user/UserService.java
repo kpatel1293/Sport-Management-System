@@ -11,6 +11,10 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
+    // 
+
+    // TODO: delete unneeded
+
     // get all users
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<User>();
@@ -23,10 +27,14 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
+    // get by email
+    public User getUserEmail(String email) {
+        return userRepository.findById(userRepository.findByEmail(email).getId()).get();
+    }
+
     // save user
     public User saveUser(User user) {
-
-
+        user.setUserType(TypeOfUser.USER);
         return userRepository.save(user);
     }
 

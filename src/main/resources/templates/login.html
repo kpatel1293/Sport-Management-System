@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Login</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    </head>
+    <body>
+        <!-- <form class="container">
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label class="form-check-label"><input type="checkbox"> Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form> -->
+        <div>
+            <h1>LOGIN</h1>
+            <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+                <p>Email: <input type="text" th:field="*{email}" /></p>
+                <p>Password: <input type="text" th:field="*{password}" /></p>
+                <p><input type="submit" value="Login" /></p>
+            </form>
+            <p>Don't have an account? <a href="/signup">Create an Account</a></p>
+        </div>    
+    </body>
+</html>

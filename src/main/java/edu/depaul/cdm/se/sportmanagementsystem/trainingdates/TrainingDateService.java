@@ -26,10 +26,10 @@ public class TrainingDateService {
 	
 	// get every TrainingDate for a certain Team, code adapted from Krishna.GameScheduleService
 	// TODO - allow searching by team name? would require team name stored in TrainingDates
-	public List<TrainingDate> getTrainingDatesByTeamId(int teamId) {
+	public List<TrainingDate> getTrainingDatesByTeamId(String teamId) {
 		List<TrainingDate> dates = new ArrayList<>();
 		trainingDateRepository.findAll().forEach(trainingDate -> {
-			if (trainingDate.getTeamId() == teamId) // TODO: is this not redundant?
+			if (trainingDate.getTeam().getTeamName().equals(teamId)) // TODO: is this not redundant?
 				dates.add(trainingDate);
 		});
 		return dates;

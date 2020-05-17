@@ -38,7 +38,7 @@ public class TrainingDateController {
 	
 	// get date by team id
 	@GetMapping("/{teamId}")
-	public ResponseEntity<List<TrainingDate>> getTrainingDatesByTeam(@PathVariable(name = "teamId") int teamId) {
+	public ResponseEntity<List<TrainingDate>> getTrainingDatesByTeam(@PathVariable(name = "teamId") String teamId) {
 		List<TrainingDate> dates = new ArrayList<>();
 		trainingDateService.getTrainingDatesByTeamId(teamId).forEach(dates::add); // TODO - efficient ..?
 		return ResponseEntity.ok().body(dates);
