@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<body>
+
+<div class="container">
+  <center><h2> Game Schedule</h2></center>
+<table class="table table-condensed">
+    <thead >
+    	<tr class="danger">
+        	<th>home-team</th>
+        	<th></th>
+            <th>game-date</th>
+            <th></th>
+            <th>away-team</th>
+            <th></th>
+            <th>Season</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:if ="${game_schedule.empty}">
+            <td colspan="2"> No data </td>
+        </tr>
+        <tr th:each="game:${game_schedule}">
+        	<td><span th:text="${game.homeTeam}"> </span></td>
+        	<th></th>
+        	<td><span th:text="${game.gameDate}"> </span></td>
+        	<th></th>
+            <td><span th:text="${game.awayTeam}"> </span></td>
+            <th></th>
+            <td><span th:text="${game.season}"> </span></td>
+           
+           
+        </tr>
+    </tbody>
+</table></div></body></body>
+
+<center><form class="button" th:action="@{/api/v1/redirect-add}" method="GET">
+    <input type="submit" value="Add event"/>
+</form></center>
+
+</html>
