@@ -11,6 +11,10 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
+    // 
+
+    // TODO: delete unneeded
+
     // get all users
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<User>();
