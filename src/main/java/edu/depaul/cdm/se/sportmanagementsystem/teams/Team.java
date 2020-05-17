@@ -21,8 +21,4 @@ public class Team implements Serializable{
 	
 	@Column(name = "city_name")
 	public String cityName;
-	
-	
-	//@OneToMany 
-
 }

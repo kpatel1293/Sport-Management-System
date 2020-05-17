@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS injuries;
+DROP TABLE IF EXISTS `players`;
+DROP TABLE IF EXISTS `managers`;
+DROP TABLE IF EXISTS `teams`;
 DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `addresses`;
 
