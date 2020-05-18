@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style>
+div{
+background-color: gray;
+}
+
+
+</style>
+
+<div class="container">
+  <center><h1>Adding Games To The Schedule</h1></center>
+
+<form action="#" th:action="@{/api/v1/save-schedule}" th:object="${schedule}" method="POST">
+      <div class="form-group">
+     <label for="awayTeam">Away team:</label>
+  	 <input type="text"  class="form-control" th:field="*{awayTeam}" id="awayTeam" placeholder="name of away team"><br>
+   	</div>
+   	 <div class="form-group">
+    <label for="season">Season:</label>
+    <input type="text" class="form-control" th:field="*{season}" id="season" placeholder="Season number"><br>
+    </div>
+    <div class="form-group">
+   <label for="homeTeam">Home Team:</label>
+    <input type="text" class="form-control" th:field="*{homeTeam}" id="homeTeam" placeholder="name of home team"><br>
+    </div>
+      <div class="form-group">
+    <label for="gameDate">Game Date:</label>
+    <input type="date" class="form-control" th:field="*{gameDate}" id="gameDate" placeholder="Game date"><br>
+    </div>
+ 
+ 
+ <center><input type="submit" value="Save Schedule"></center> 
+</form></div>
+</html>
