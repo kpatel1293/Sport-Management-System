@@ -25,3 +25,7 @@ insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `fi
 insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 11, '1998-12-22', 'sendrizzic@wordpress.com', 'Skylar', 'Endrizzi', 'N6P52Z', 0, 'Male');
 insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 12, '1998-01-28', 'yadlemh@hao123.com', 'Yovonnda', 'Adlem', 'mXRZEuL0yF', 0, 'Female');
 insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, 13, '1985-02-13', 'bdellj@unicef.org', 'Blakeley', 'Dell', 'mkJb5e', 0, 'Male');
+
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, null, '1965-02-02', 'jordan@gmail.com', 'Michael', 'Jordan', 'mkJb5e', 3, 'Male');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, null, '1975-01-01', 'pippen@gmail.com', 'Scottie', 'Pippen', 'mkJb5e', 3, 'Male');
+insert into `users` (`user_id`, `address_id`, `date_of_birth`, `user_email`, `first_name`, `last_name`, `password`, `user_type`, `gender`) values (null, null, '1975-03-03', 'den@gmail.com', 'Dennis', 'Rodman', 'mkJb5e', 3, 'Male');

@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import edu.depaul.cdm.se.sportmanagementsystem.player.*;
 
@@ -25,10 +23,6 @@ import edu.depaul.cdm.se.sportmanagementsystem.player.*;
 public class ManagersController {
     @Autowired
     ManagersService managersService;
-    
-    @Autowired
-    private ManagersRepository managerRepo;
-    
     
     @GetMapping("/api/v1/managers/{id}/roster")
     public String viewRoster(Model model, @PathVariable(name = "id") Long id){
