@@ -1,7 +1,6 @@
 package edu.depaul.cdm.se.sportmanagementsystem.user;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import edu.depaul.cdm.se.sportmanagementsystem.user.address.Address;
 import edu.depaul.cdm.se.sportmanagementsystem.user.address.AddressService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 // @RequestMapping("/api/v1/users")
