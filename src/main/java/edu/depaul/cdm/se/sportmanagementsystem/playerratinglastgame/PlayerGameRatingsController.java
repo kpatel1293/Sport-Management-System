@@ -31,6 +31,15 @@ public class PlayerGameRatingsController {
     
     
     
+    @GetMapping
+    public String showRatings(Model model) {
+    	
+    	model.addAttribute("ratings", gameRepo.findAll());
+    	
+    	return "ratings/showGameRatings";
+    }
+    
+    
     @RequestMapping(params = "addRating")
     public String addRating(Model model) {
     	model.addAttribute("gameRating", new PlayerGameRatings());
@@ -44,14 +53,14 @@ public class PlayerGameRatingsController {
     // add rating
    // @RequestMapping(value="/gameRating", method=RequestMethod.POST)
     @PostMapping
-    public String createRating(@ModelAttribute("gameRating")PlayerGameRatings gameRating, BindingResult bindingResult) {
+    public String createRating(@ModelAttribute("rating")PlayerGameRatings gameRating, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
         	return "ratings/playerGameRatings";
         }
     	
     	gameRepo.save(gameRating);
         
-    	return "redirect:/gameRating";
+    	return "redirect:/api/v1/rating";
     }
     
     
