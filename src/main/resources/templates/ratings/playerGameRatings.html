@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Place Rating</title>
+</head>
+<body>
+
+	<div class ="container">
+	Place Rating
+	
+		<form action="#" th:action="@{/api/v1/rating/gameRating}" th:object="${gameRating}" method="post">
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" th:field="*{user.firstName}" placeholder="First Name">
+                    </div>
+             </div>
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" th:field="*{user.lastName}" placeholder="Last Name">
+                    </div>
+             </div>           
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="name">Rating 1 to 10</label>
+                    <input type="text" class="form-control" th:field="*{rating1to10}" placeholder="Rating 1 to 10">
+                    </div>
+             </div> 
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="name">Leave review message</label>
+                    <input type="text" class="form-control" th:field="*{message}" placeholder="Rating 1 to 10">
+                   </div>
+             </div>	
+			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+	
+	
+		</form>
+	
+	</div>
+</body>
+</html>
