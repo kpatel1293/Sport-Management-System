@@ -2,6 +2,7 @@ package edu.depaul.cdm.se.sportmanagementsystem.user;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,12 +30,13 @@ public class UserService {
 
     // get by email
     public User getUserEmail(String email) {
-        return userRepository.findById(userRepository.findByEmail(email).getId()).get();
+        return userRepository.findByEmail(email);
     }
 
     // save user
     public User saveUser(User user) {
-        user.setUserType(TypeOfUser.USER);
+        if(user.getUserType().toString().isEmpty())
+            user.setUserType(TypeOfUser.USER);
         return userRepository.save(user);
     }
 

@@ -67,6 +67,17 @@ public class PlayerServices {
         return playerRepository.save(player);
     }
 
+    public Player getPlayerByUser(User user) {
+        return playerRepository.findByUser(user);
+    }
+
+    public List<Player> getPlayerByManager(Managers manager) {
+        List<Player> players = new ArrayList<>();
+        playerRepository.findByManager(manager).forEach(players::add);
+
+        return players;
+    }
+
     // update player
     
     // delete player
