@@ -1,15 +1,24 @@
 package edu.depaul.cdm.se.sportmanagementsystem.user;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import edu.depaul.cdm.se.sportmanagementsystem.managers.Managers;
+import edu.depaul.cdm.se.sportmanagementsystem.managers.ManagersService;
+import edu.depaul.cdm.se.sportmanagementsystem.player.Player;
+import edu.depaul.cdm.se.sportmanagementsystem.player.PlayerServices;
 import edu.depaul.cdm.se.sportmanagementsystem.user.address.Address;
 import edu.depaul.cdm.se.sportmanagementsystem.user.address.AddressService;
 
@@ -18,6 +27,12 @@ import edu.depaul.cdm.se.sportmanagementsystem.user.address.AddressService;
 public class UserController {
     @Autowired
     UserService userService;
+    
+    @Autowired
+    PlayerServices playerServices;
+
+    @Autowired
+    ManagersService managerService;
 
     @Autowired
     AddressService addressService;
@@ -28,12 +43,23 @@ public class UserController {
         model.addAttribute("user", new User());
         return "login";
     }
-
+// 'admin@admin.com', 'ADMIN'
     @PostMapping("/login")
     public String succ(@ModelAttribute User user) {
-        if (userService.getUserEmail(user.getEmail()).equals(null))
+        if(user.getEmail().isEmpty() || user.getPassword().isEmpty())
             return "redirect:/login";
-        return "main";
+        
+        // User u = userService.getUserEmail(user.getEmail());
+
+        // if(u.getId().equals(null))
+        //     return "redirect:/login";
+
+        // System.out.println("################");
+        // System.out.println(user.toString());
+        // System.out.println(u.toString());
+        // System.out.println("################");
+
+        return "redirect:/main";
     }
 
     // get all user
@@ -49,14 +75,13 @@ public class UserController {
         return "user";
     }
 
-    // // get user
-    // @GetMapping("/{id}")
-    // public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long
-    // userId) {
-    // User user = userService.getUser(userId);
-
-    // return ResponseEntity.ok().body(user);
-    // }
+    // get user
+    @GetMapping("/users/{id}")
+    public String getUserById(@PathVariable(value = "id") Long userId, Model model) {
+        User user = userService.getUser(userId);
+        model.addAttribute("user", user);
+        return "edit-user";
+    }
 
     // create user
     @GetMapping("/signup")
@@ -68,7 +93,6 @@ public class UserController {
 
     @PostMapping("/signup")
     public String createUser(@ModelAttribute User user, @ModelAttribute Address address) {
-        System.out.println("HIITT");
         if (user.getFirstName().isEmpty())
             return "signup";
         if (user.getLastName().isEmpty())
@@ -79,11 +103,6 @@ public class UserController {
             return "signup";
         if (user.getPassword().isEmpty())
             return "signup";
-        // if(user.getAddress().getStreetOne().isEmpty()) return "signup";
-        // if(user.getAddress().getStreetTwo().isEmpty()) return "signup";
-        // if(user.getAddress().getCity().isEmpty()) return "signup";
-        // if(user.getAddress().getState().isEmpty()) return "signup";
-        // if(user.getAddress().getZipcode().isEmpty()) return "signup";
 
         userService.saveUser(user);
 
@@ -98,24 +117,72 @@ public class UserController {
     }
     
 
-    // // update user
-    // @PutMapping("/{id}")
-    // public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long userId, @Valid @RequestBody User user) {
-    //     User updatedUser = userService.updateUser(userId, user);
+    // update user
+    @PostMapping("/users/{id}")
+    public String updateUser(@PathVariable(value = "id") Long userId, @ModelAttribute User user) {
+        User u = userService.getUser(user.getId());
+        if(user.getPassword().trim().isEmpty()) user.setPassword(u.getPassword());
+        userService.updateUser(userId, user);
 
-    //     return ResponseEntity.ok().body(updatedUser);
-    // }
+        return "redirect:/main";
+    }
 
-    // // delete user
-    // @DeleteMapping("/{id}")
-    // public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long id) {
-    //     User user = userService.getUser(id);
+    // delete user
+    @GetMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable(value = "id") Long id) {
+        User user = userService.getUser(id);
 
-    //     userService.deleteUser(user);
+        if(user.getUserType() == TypeOfUser.PLAYER) {
+            Player player = playerServices.getPlayerByUser(user);
+            player.setManager(null);
+            player.setTeam(null);
+            playerServices.deletePlayer(player);
+        }
+        
+        if(user.getUserType() == TypeOfUser.MANAGER) {
+            System.out.println(managerService.getManagerByUser(user));
+            Managers manager = managerService.getManagerByUser(user);
 
-    //     Map<String, Boolean> resp = new HashMap<>();
-    //     resp.put("deleted", Boolean.TRUE);
+            List<Player> players = playerServices.getPlayerByManager(manager);
+            players.forEach(player -> {
+                player.setManager(null);
+            });
 
-    //     return resp;
-    // }
+            manager.setTeam(null);
+            managerService.deleteManager(manager);
+        }
+
+        userService.deleteUser(user);
+
+        // Map<String, Boolean> resp = new HashMap<>();
+        // resp.put("deleted", Boolean.TRUE);
+        // System.out.println("RESP DELETE --- " + resp);
+
+        return "redirect:/main";
+    }
+
+    @GetMapping("/users/create")
+    public String createUserAdmin(Model model) {
+        model.addAttribute("user", new User());
+
+        return "create-user";
+    }
+
+    @PostMapping("/users/create")
+    public String createUserPost(@ModelAttribute User user, @ModelAttribute Address address) {
+        if (user.getFirstName().isEmpty())
+            return "create-user";
+        if (user.getLastName().isEmpty())
+            return "create-user";
+        if (user.getDob() == null)
+            return "create-user";
+        if (user.getEmail().isEmpty())
+            return "create-user";
+        if (user.getPassword().isEmpty())
+            return "create-user";
+
+        userService.saveUser(user);
+
+        return "redirect:/main";
+    }
 }

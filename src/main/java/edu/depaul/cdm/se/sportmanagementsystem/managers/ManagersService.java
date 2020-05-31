@@ -68,4 +68,9 @@ public class ManagersService {
     public void deleteManager(Managers manager) {
         managersepository.delete(manager);
     }
+
+
+    public Managers getManagerByUser(User user) {
+        return managersRepository.findByUser(user);
+    }
 }
