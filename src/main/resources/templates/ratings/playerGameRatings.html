@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+		 <!-- Bootstrap CSS -->
+      	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<title>Place Rating</title>
+</head>
+<body>
+
+
+	<header>
+		<center><h1 class="display-4"> Player Game Rating</h1></center>
+	
+	</header>
+
+	<div class ="container">
+		
+	
+	
+		<form action="#" th:action="@{/api/v1/rating}" th:object="${gameRating}" method="post">
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" th:field="*{user.firstName}" placeholder="First Name">
+                    </div>
+             </div>
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" th:field="*{user.lastName}" placeholder="Last Name">
+                    </div>
+             </div>           
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="rating">Rating 1 to 10</label>
+                    <input type="text" class="form-control" th:field="*{rating1to10}" placeholder="Rating 1 to 10">
+                    </div>
+             </div> 
+            <div class="row form-group">
+                <div class="col-lg-6">                
+                    <label for="message">Leave review message</label>
+                    <input type="text" class="form-control" th:field="*{message}" placeholder="Review message...">
+                   </div>
+             </div>	
+			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+	
+	
+		</form>
+	
+	</div>
+</body>
+</html>
