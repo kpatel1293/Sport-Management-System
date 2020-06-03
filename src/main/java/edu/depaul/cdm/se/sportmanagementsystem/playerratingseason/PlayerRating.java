@@ -38,4 +38,8 @@ public class PlayerRating implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+    
+
+	@Column(name = "message")
+	private String message;
 }
