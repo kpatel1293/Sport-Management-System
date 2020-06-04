@@ -20,12 +20,12 @@ public class PlayerRatingService {
 
         return playerRatings;
     }
-
+    /*
     // get a rating
     public PlayerRating getPlayerRating(Long id) {
         return playerRatingRepository.findById(id).get();
     }
-    
+    */
     // get all ratings by user
     public List<PlayerRating> getPlayerRatingsByUser(User user) {
         List<PlayerRating> playerRatings = new ArrayList<>();
@@ -49,7 +49,7 @@ public class PlayerRatingService {
     }
     
     // get all ratings for season
-    public List<PlayerRating> getPlayerRatingsBySeason(int season) {
+    public List<PlayerRating> getPlayerRatingsBySeason(String season) {
         List<PlayerRating> playerRatings = new ArrayList<>();
 
         playerRatingRepository.findAll().forEach(playerRating -> {
@@ -60,7 +60,7 @@ public class PlayerRatingService {
     }
     
     // get all ratings for season and player
-    public List<PlayerRating> getPlayerRatingsBySeasonAndPlayer(Long id, int season) {
+    public List<PlayerRating> getPlayerRatingsBySeasonAndPlayer(Long id, String season) {
         List<PlayerRating> playerRatings = new ArrayList<>();
 
         playerRatingRepository.findAll().forEach(playerRating -> {
@@ -69,15 +69,15 @@ public class PlayerRatingService {
 
         return playerRatings;
     }
-    
+    /*
     // save rating
     public PlayerRating savePlayerRating(PlayerRating playerRating) {
         Long count = playerRatingRepository.count() + 1;
         playerRating.setId(count);
-
+S
         return playerRatingRepository.save(playerRating);
     }
-    
+    */
     // delete rating
     public void deleteRating(PlayerRating playerRating) {
         playerRatingRepository.delete(playerRating);
