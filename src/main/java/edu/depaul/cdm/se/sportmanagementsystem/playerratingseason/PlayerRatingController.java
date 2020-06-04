@@ -55,7 +55,7 @@ public class PlayerRatingController {
     // add rating
    // @RequestMapping(value="/gameRating", method=RequestMethod.POST)
     @PostMapping
-    public String createRating(@ModelAttribute("seasonRating")PlayerRating seasonRating, BindingResult bindingResult) {
+    public String createRating(@ModelAttribute("seasonRatings")PlayerRating seasonRating, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
         	return "ratings/playerSeasonRatings";
         }
