@@ -9,26 +9,66 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.depaul.cdm.se.sportmanagementsystem.playerratinglastgame.PlayerGameRatings;
 import edu.depaul.cdm.se.sportmanagementsystem.user.User;
-import edu.depaul.cdm.se.sportmanagementsystem.user.UserService;
 
-@RestController
-@RequestMapping("/api/v1/players/ratings")
+
+@Controller
+@RequestMapping("/api/v1/players/seasonRatings")
 public class PlayerRatingController {
     @Autowired
     PlayerRatingService playerRatingService;
 
-    @Autowired 
-    UserService userService;
-
+    @Autowired
+    PlayerRatingRepository seasonRepo;
+    
+    @GetMapping
+    public String showSeasonRatings(Model model) {
+    	
+    	model.addAttribute("ratings", seasonRepo.findAll());
+    	
+    	return "ratings/showSeasonRatings";
+    }
+    
+    
+    @RequestMapping(params = "addRating")
+    public String addSeasonRating(Model model) {
+    	model.addAttribute("seasonRating", new PlayerRating());
+    	return "ratings/playerSeasonRatings";
+    	
+    	
+    }
+    
+    
+    // add rating
+   // @RequestMapping(value="/gameRating", method=RequestMethod.POST)
+    @PostMapping
+    public String createRating(@ModelAttribute("seasonRatings")PlayerRating seasonRating, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+        	return "ratings/playerSeasonRatings";
+        }
+    	
+    	seasonRepo.save(seasonRating);
+        
+    	return "redirect:/api/v1/players/seasonRatings";
+    }
+    
+    
+    
+    
+    /*
     // get all the ratings
     @GetMapping
     public List<PlayerRating> getAllPlayerRatings() {
@@ -98,5 +138,5 @@ public class PlayerRatingController {
 
         return resp;
     }
-
+*/
 }

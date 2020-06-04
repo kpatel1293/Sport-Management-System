@@ -6,13 +6,13 @@
 	 <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<title>Game Ratings</title>
+<title>Season Ratings</title>
 </head>
 <body>
 
 
 <header>
-		<h1 class="display-4"> View Game Ratings</h1>
+		<h1 class="display-4"> View Season Ratings</h1>
 	
 	</header>
 
@@ -22,6 +22,7 @@
 				<tr>					
 					<th scope = "col"> First Name</th>
 					<th scope = "col"> Last Name</th>
+					<th scope = "col"> Season</th>	
 					<th scope = "col"> Rating</th>	
 					<th scope = "col"> Message </th>		
 				
@@ -37,8 +38,9 @@
 				<tr th:each ="rating: ${ratings}">	
 					<td th:text = "${rating.user.firstName}"></td>
 					<td th:text = "${rating.user.lastName}"></td>
-					<td th:text = "${rating.rating1to10}"></td>
-					<td th:text = "${rating. message}"></td>
+					<td th:text = "${rating.season}"></td>
+					<td th:text = "${rating.rating}"></td>
+					<td th:text = "${rating.message}"></td>
 					
 				</tr>
 					
@@ -46,7 +48,7 @@
 			</tbody>
 		
 		</table>
-	<a class="btn btn-lg btn-primary" th:href="@{/api/v1/rating?addRating}"> Add Review </a></td>
+		<a class="btn btn-lg btn-primary" th:href="@{/api/v1/players/seasonRatings?addRating}"> Add Review </a></td>
 	
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
