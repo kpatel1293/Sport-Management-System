@@ -80,17 +80,10 @@ public class PlayerController {
     @RequestMapping(value ="player/{id}" , method = RequestMethod.POST)
     public String deleteUser(@PathVariable(value = "id") Long id, Model model ) {
         Player player = playerService.getPlayer(id);
-        //User user = userService.getUser(id);
-        // playerService.deletePlayer(player);
-//           if(user.getUserType() == TypeOfUser.PLAYER) {
-//               Player player = playerService.getPlayerByUser(user);
-//               player.setManager(null);
-//                player.setTeam(null);
-//               playerService.deletePlayer(player);
-//           }
-
         player.setManager(null);
+        player.setUser(null);
         player.setTeam(null);
+        player = playerService.savePlayer(player);
         playerService.deletePlayer(player);
 
         model.addAttribute("players", playerService.getAllPlayers());
