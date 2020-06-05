@@ -13,10 +13,7 @@ public class GameScheduleService {
 
     // get all game schedules
     public List<GameSchedule> getAllGames() {
-        List<GameSchedule> gameSchedules = new ArrayList<GameSchedule>();
-        gameScheduleRepository.findAll().forEach(gameSchedules::add);
-
-        return gameSchedules;
+        return gameScheduleRepository.findAll();
     }
 
     // get a game schedule

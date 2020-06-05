@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Sign Up</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="/api/v1/manager-landing">Manager Menu</a>
+        </li>
+        <!--        <li class="nav-item">-->
+        <!--            <a class="nav-link" href="/users/create">Add User</a>-->
+        <!--        </li>-->
+        <!--        <li class="nav-item">-->
+        <!--            <a class="nav-link" href="#">Add Team</a>-->
+        <!--        </li>-->
+    </ul>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"> Add a Player</h1>
+    </div>
+</div>
+<div class="container col-7 justify-content-center">
+    <form action="#" th:action="@{/api/v1/players/save}" th:object="${player}" method="POST">
+        <div class="form-group form-col">
+            <input type="hidden"  class="form-control" th:field="*{id}" id="id" >
+            <div class="col">
+                <label for="inputPlayer">Player</label>
+                <select id="inputPlayer" class="form-control" th:field="*{user}">
+                    <option value="">Select Player...</option>
+                    <option th:each="user : ${listPlayer}" th:value="${user.id}" th:text="${user.lastName} + ' ' +${user.firstName}">
+                    </option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="inputManager">Manager</label>
+                <select id="inputManager" class="form-control" th:field="*{manager}">
+                    <option value="">Select Manager...</option>
+                    <option th:each="manager : ${listManager}" th:value="${manager.id}" th:text="${manager.user.lastName}+ ' ' +${manager.user.firstName}"></option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="inputTeam">Manager</label>
+                <select id="inputTeam" class="form-control" th:field="*{team}">
+                    <option value="">Select Team...</option>
+                    <option th:each="t : ${listTeam}" th:value="${t.teamName}" th:text="${t.teamName}"></option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="activeInput">isActive</label>
+                <select id="activeInput" class="form-control" th:field="*{isActive}">
+                    <option value="">Select state...</option>
+                    <option th:value="true" th:text="True"></option>
+                    <option th:value="false" th:text="False"></option>
+                </select>
+            </div>
+
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+</body>
+</html>

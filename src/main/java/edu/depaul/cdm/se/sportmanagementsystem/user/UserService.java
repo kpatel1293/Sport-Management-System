@@ -52,4 +52,9 @@ public class UserService {
     public void deleteUser(User user) {
         userRepository.delete(user);
     }
+
+    public List<User> findUserByType(TypeOfUser typeOfUser) {
+        return userRepository.findByUserType(typeOfUser);
+    }
+
 }

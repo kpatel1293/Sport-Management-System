@@ -11,10 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "game_schedule")
 @Data
+@Getter
+@Setter
 public class GameSchedule implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -36,4 +40,12 @@ public class GameSchedule implements Serializable {
 
     @Column(name = "season")
     private int season;
+
+    public String getHomeTeam() {
+        return homeTeam;
+    }
+
+    public void setHomeTeam(String homeTeam) {
+        this.homeTeam = homeTeam;
+    }
 }
