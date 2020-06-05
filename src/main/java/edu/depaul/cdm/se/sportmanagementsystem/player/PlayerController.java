@@ -81,13 +81,17 @@ public class PlayerController {
     public String deleteUser(@PathVariable(value = "id") Long id, Model model ) {
         Player player = playerService.getPlayer(id);
         //User user = userService.getUser(id);
-        playerService.deletePlayer(player);
+        // playerService.deletePlayer(player);
 //           if(user.getUserType() == TypeOfUser.PLAYER) {
 //               Player player = playerService.getPlayerByUser(user);
 //               player.setManager(null);
 //                player.setTeam(null);
 //               playerService.deletePlayer(player);
 //           }
+
+        player.setManager(null);
+        player.setTeam(null);
+        playerService.deletePlayer(player);
 
         model.addAttribute("players", playerService.getAllPlayers());
 
