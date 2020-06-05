@@ -30,12 +30,12 @@ public class Player implements Serializable {
     private Long id;
     
     // user id
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     // team
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_name")
     private Team team;
     
