@@ -27,7 +27,7 @@ public class Player implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "player_id")
-    private int id;
+    private Long id;
     
     // user id
     @OneToOne(cascade = CascadeType.ALL)
@@ -46,4 +46,6 @@ public class Player implements Serializable {
     @ManyToOne
     @JoinColumn(name = "manager_id")
     public Managers manager;
+
+
 }

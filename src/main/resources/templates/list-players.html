@@ -1,49 +1,135 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <center><h2>Active & Nonactive Players</h2></center>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="ISO-8859-1">-->
 
-            <table class="table table-condensed">
-                <thead>
-                    <tr class="info">
-                        <th>First Name</th>
-                        <th></th>
-                        <th>Last Name </th>
-                        <th></th>
-                        <th>Team</th>
-                        <th></th>
-                        <th>Is Active</th>
-                        <th></th>
-                        <th> Manger Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:if ="${players.empty}">
-                        <td colspan="2"> No  Available </td>
-                    </tr>
-                    <tr th:each="player : ${players}">
-                        <td><span th:text="${player.user.firstName}"> </span></td>
-                        <th></th>
-                        <td><span th:text="${player.user.lastName}"> </span></td>
-                        <th></th>
-                        <td><span th:text="${player.team.teamName}"> </span></td>
-                        <th></th>
-                        <td><span th:text="${player.isActive}"></span></td>
-                        <th></th>
-                        <td><span th:text="${player.manager.user.lastName}"></span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
+
+<!--    <title>Game Ratings</title>-->
+<!--</head>-->
+<!--<body>-->
+
+
+<!--<header>-->
+<!--    <h1 class="display-4"> Players Table</h1>-->
+
+<!--</header>-->
+
+<!--<div>-->
+<!--    <table class = "table table-bordered table-striped">-->
+<!--        <thead class= "thead-dark">-->
+<!--        <tr>-->
+<!--            <th scope = "col"> First Name</th>-->
+<!--            <th scope = "col"> Last Name</th>-->
+<!--            <th scope = "col"> Team</th>-->
+<!--            <th scope = "col"> IsActive</th>-->
+<!--            <th scope = "col"> ManagerName</th>-->
+<!--        </tr>-->
+
+<!--        </thead>-->
+
+<!--        <tbody>-->
+<!--        <tr th:if ="${players.empty}">-->
+<!--            <td colspan = "2"> No Ratings Yet</td>-->
+
+<!--        </tr>-->
+<!--        <tr th:each ="player : ${players}">-->
+<!--            <td th:text = "${player.user.firstName}"></td>-->
+<!--            <td th:text = "${player.user.lastName}"></td>-->
+<!--            <td th:text = "${player.team.teamName}"></td>-->
+<!--            <td th:text = "${player.isActive}"></td>-->
+<!--            <td th:text = "${player.manager.user.lastName}"></td>-->
+
+<!--        </tr>-->
+
+
+<!--        </tbody>-->
+
+<!--    </table>-->
+
+<!--</div>-->
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>-->
+
+
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Amin Possible Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="/api/v1/manager-landing">Manager Menu</a>
+        </li>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="/users/create">Add User</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">Add Team</a>-->
+<!--        </li>-->
+    </ul>
+</nav>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Players Table</h1>
+    </div>
+</div>
+<div class="container col-7 justify-content-center">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope = "col"> First Name</th>
+            <th scope = "col"> Last Name</th>
+            <th scope = "col"> Team</th>
+            <th scope = "col"> IsActive</th>
+            <th scope = "col"> ManagerName</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody th:each="player : ${players}">
+        <tr>
+            <th th:text="${player.user.firstName}"></th>
+            <td th:text="${player.user.lastName}"></td>
+            <td th:text="${player.team.teamName}"></td>
+            <td th:text="${player.isActive}"></td>
+            <td th:text="${player.manager.user.lastName}"></td>
+            <td>
+<!--                <button type="button" class="btn btn-outline-primary"><a >Edit</a></button>-->
+                </form>
+
+
+                <form th:action="@{player/{id}(id=${player.id})}" th:method = "post">
+
+                    <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                </form>
+                <form  th:action="@{/api/v1/players/redirect-add-or-edit/{edit}(edit = ${player.id})}" th:method = "get">
+                    <input type="submit" value="Edit" class="btn btn-outline-primary" />
+                </form>
+<!--                <button type="button" class="btn btn-outline-danger"><a >Delete</a></button>-->
+<!--                <button type="button" class="btn btn-outline-danger"><a href="#" th:href="@{'/users/delete/' + ${user.id}}">Delete</a></button>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<center><form class="btn btn-primary"  th:action="@{/api/v1/players/redirect-add-or-edit/{edit}(edit = -1)}" method="GET">
+    <input class="btn btn-primary"  type="submit" value="Add Player"/></form></center>
+
 </html>

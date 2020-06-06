@@ -8,4 +8,3 @@ INSERT INTO players (user_id, team_name, manager_id, active_player) VALUES
 	(14, 'Bulls', 2, true),
 	(15, 'Bulls', 2, true),
 	(16, 'Bulls', 2, true);
-	
