@@ -38,7 +38,7 @@ public class UserController {
     AddressService addressService;
 
     // login
-    @GetMapping("/login")
+    @GetMapping({"/", "/login"})
     public String login(Model model) {
         model.addAttribute("user", new User());
         return "login";
@@ -132,28 +132,32 @@ public class UserController {
     public String deleteUser(@PathVariable(value = "id") Long id) {
         User user = userService.getUser(id);
 
-        if(user.getUserType() == TypeOfUser.PLAYER) {
-            Player player = playerServices.getPlayerByUser(user);
-            player.setManager(null);
-            player.setTeam(null);
-            playerServices.deletePlayer(player);
+        if(user != null) {
+
+            if(user.getUserType() == TypeOfUser.PLAYER) {
+                Player player = playerServices.getPlayerByUser(user);
+                if(player != null) {
+                    player.setManager(null);
+                    player.setTeam(null);
+                    playerServices.deletePlayer(player);
+                }
+            }
+            
+            if(user.getUserType() == TypeOfUser.MANAGER) {
+                Managers manager = managerService.getManagerByUser(user);
+                if(manager != null) {
+                    List<Player> players = playerServices.getPlayerByManager(manager);
+                    players.forEach(player -> {
+                        player.setManager(null);
+                    });
+
+                    manager.setTeam(null);
+                    managerService.deleteManager(manager);
+                }
+            }
+
+            userService.deleteUser(user);
         }
-        
-        if(user.getUserType() == TypeOfUser.MANAGER) {
-            System.out.println(managerService.getManagerByUser(user));
-            Managers manager = managerService.getManagerByUser(user);
-
-            List<Player> players = playerServices.getPlayerByManager(manager);
-            players.forEach(player -> {
-                player.setManager(null);
-            });
-
-            manager.setTeam(null);
-            managerService.deleteManager(manager);
-        }
-
-        userService.deleteUser(user);
-
         // Map<String, Boolean> resp = new HashMap<>();
         // resp.put("deleted", Boolean.TRUE);
         // System.out.println("RESP DELETE --- " + resp);

@@ -12,24 +12,27 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </head>
     <body>
-      <nav>
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="/main">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/users/create">Add User</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Add Team</a>
-          </li>
-        </ul>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/main">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/create">Add User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Teams</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/api/v1/manager-landing">Manager's Menu</a>
+            </li>
+          </ul>
+        </div>
       </nav>
-      <div class="jumbotron">
         <div class="container">
             <h1 class="display-4">Welcome Back! ...</h1>
         </div>
-    </div>
         <div class="container col-7 justify-content-center">
             <table class="table">
                 <thead class="thead-dark">
@@ -38,7 +41,12 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Type</th>
-                    <th></th>
+                    <th>
+                      <form class="form-inline my-2 my-lg-0" th:object="${users}" method="post">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" th:value="${user}">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                    </th>
                   </tr>
                 </thead>
                 <tbody th:each="user : ${users}">
