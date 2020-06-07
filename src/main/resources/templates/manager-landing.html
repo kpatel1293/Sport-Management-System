@@ -19,9 +19,11 @@
 				<a class="btn btn-primary" href="/api/v1/players/all" role="button"> View Players</a><br/><br/>
 				<!--a class="btn btn-primary" href="/schedule-input" role="button">Add Game</a><br/><br/-->
 				<a class="btn btn-primary" href="/api/v1/all" role="button">View Schedules</a><br/><br/>
-				<a class="btn btn-primary" href="/teams/ViewRoster" role="button">View Team Roster</a><br/><br/>
-				<a class="btn btn-primary" href="/ratings/showGameRatings" role="button">View Player Game Ratings</a><br/><br/>
-				<a class="btn btn-primary" href="/ratings/playerGameRatings" role="button">Create Player Game Rating</a><br/><br/>
+				<!-- a class="btn btn-primary" href="/api/v1/managers/+{managers.id}/roster" role="button">View Team Roster</a><br/><br/> -->
+				<a class="btn btn-primary" href="/api/v1/rating" role="button">View Player Game Ratings</a><br/><br/>
+				<a class="btn btn-primary" href="/api/v1/rating?addRating" role="button">Create Player Game Rating</a><br/><br/>
+				<a class="btn btn-primary" href="/api/v1/players/seasonRatings?addRating" role="button">Create Player Season Rating</a><br/><br/>
+				<a class="btn btn-primary" href="/api/v1/players/seasonRatings" role="button">View Player Season Rating</a><br/><br/>
 				<a class="btn btn-secondary" href="/login" role="button">Logout</a>
 			</center>
         </div>    
